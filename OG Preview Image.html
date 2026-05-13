@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>OG Preview — Creative OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  .bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 80% at 10% 20%, #c026d3 0%, transparent 55%),
+      radial-gradient(70% 70% at 95% 90%, #3b82f6 0%, transparent 55%),
+      radial-gradient(40% 50% at 80% 10%, #6366f1 0%, transparent 55%),
+      #07060d;
+    filter: blur(0.5px);
+  }
+  .grain {
+    position: absolute; inset: 0;
+    opacity: 0.08; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .frame {
+    position: relative; z-index: 2;
+    height: 100%;
+    padding: 64px 72px;
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 56px;
+    align-items: center;
+  }
+
+  /* Left */
+  .left { padding-right: 0; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(8px);
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e5e7eb;
+    margin-bottom: 28px;
+  }
+  .badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e; box-shadow: 0 0 0 5px rgba(34,197,94,0.2);
+  }
+  h1 {
+    font-size: 72px;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    margin-bottom: 22px;
+    max-width: 14ch;
+  }
+  h1 .grad {
+    background: linear-gradient(120deg, #f0abfc 0%, #c4b5fd 50%, #93c5fd 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    font-size: 22px;
+    line-height: 1.45;
+    color: #c7c7cf;
+    max-width: 38ch;
+    margin-bottom: 36px;
+  }
+  .row {
+    display: inline-flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 14px 20px 14px 16px;
+    border-radius: 999px;
+  }
+  .row .x {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    display: grid; place-items: center;
+    color: #0a0a0f;
+  }
+  .row .x svg { width: 18px; height: 18px; }
+  .row .h {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .row .at { color: #c7c7cf; font-weight: 500; }
+
+  /* Right — the OS mark */
+  .right {
+    position: relative;
+    aspect-ratio: 1;
+    height: 100%;
+    display: grid; place-items: center;
+  }
+  .mark {
+    position: relative;
+    width: 460px; height: 460px;
+    display: grid; place-items: center;
+    filter:
+      drop-shadow(0 50px 100px rgba(0,0,0,0.5))
+      drop-shadow(0 0 60px rgba(192,38,211,0.35))
+      drop-shadow(0 0 40px rgba(59,130,246,0.25));
+  }
+  .mark img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .corner {
+    position: absolute;
+    bottom: 36px; left: 72px;
+    display: flex; align-items: center; gap: 12px;
+    color: #8a8a93;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    z-index: 3;
+  }
+  .corner .bar { width: 36px; height: 1px; background: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="left">
+      <div class="badge"><span class="dot"></span><span>Live on X · Just shipped</span></div>
+      <h1>Creative OS is on <span class="grad">X</span>.</h1>
+      <div class="sub">AI-powered creative direction, branding &amp; visual production system. Follow along while we ship in public.</div>
+      <div class="row">
+        <div class="x">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-7.06l-5.52-7.21L4.2 22H.94l8.04-9.18L1 2h7.22l4.99 6.6L18.24 2Zm-1.24 18h1.86L7.08 4H5.13l11.87 16Z"/></svg>
+        </div>
+        <div class="h mono">@joinCreativeOS</div>
+        <div class="at">— tap to follow →</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="mark">
+        <img src="assets/icon-transparent.png" alt="Creative OS" />
+      </div>
+    </div>
+  </div>
+
+  <div class="corner"><span class="bar"></span><span>A Pixelhaus product</span></div>
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Follow @joinCreativeOS — Creative OS just landed on X</title>
+
+<!-- ============ Open Graph / share previews ============ -->
+<!-- URLs are relative so this bundle works on ANY host without edits. -->
+<!-- If your host rejects relative og:image, replace with absolute URLs. -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Creative OS" />
+<meta property="og:title" content="Creative OS just landed on X — follow @joinCreativeOS" />
+<meta property="og:description" content="AI-powered creative direction, branding & visual production system. Coming soon from Pixelhaus." />
+<meta property="og:image" content="og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@joinCreativeOS" />
+<meta name="twitter:creator" content="@joinCreativeOS" />
+<meta name="twitter:title" content="Creative OS just landed on X — follow @joinCreativeOS" />
+<meta name="twitter:description" content="AI-powered creative direction, branding & visual production system." />
+<meta name="twitter:image" content="og.png" />
+<meta name="theme-color" content="#0a0a0f" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --fg: #f5f5f7;
+    --muted: #8a8a93;
+    --line: rgba(255,255,255,0.08);
+    --card: #111118;
+    --grad-a: #c026d3;
+    --grad-b: #6366f1;
+    --grad-c: #3b82f6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter Tight', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-feature-settings: "ss01","cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  /* Ambient backdrop */
+  .stage {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 40px 20px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ambient {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  }
+  .ambient::before, .ambient::after {
+    content: ""; position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: 0.55;
+    transition: opacity 600ms ease, background 600ms ease;
+  }
+  .ambient::before {
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, var(--grad-a) 0%, transparent 60%);
+    top: -180px; left: -120px;
+    animation: floatA 18s ease-in-out infinite;
+  }
+  .ambient::after {
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, var(--grad-c) 0%, transparent 60%);
+    bottom: -200px; right: -160px;
+    animation: floatB 22s ease-in-out infinite;
+  }
+  @keyframes floatA {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(60px,40px) scale(1.08); }
+  }
+  @keyframes floatB {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(-50px,-30px) scale(1.06); }
+  }
+  .grain {
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    opacity: 0.06; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+
+  .wrap { position: relative; z-index: 2; width: 100%; max-width: 560px; }
+
+  /* Eyebrow */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 12px; border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.18);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 50% { opacity: 0.55; } }
+
+  /* The share card */
+  .card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 30px 80px -20px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(255,255,255,0.02);
+  }
+
+  .banner {
+    position: relative;
+    aspect-ratio: 3 / 1;
+    background:
+      radial-gradient(120% 140% at 20% 30%, #c026d3 0%, transparent 55%),
+      radial-gradient(120% 140% at 80% 70%, #3b82f6 0%, transparent 55%),
+      linear-gradient(135deg, #1a0f2e 0%, #0a1834 100%);
+    overflow: hidden;
+  }
+  .banner-icon {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 8px;
+  }
+  .banner-icon img {
+    max-height: 78%;
+    max-width: 30%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 60px rgba(192,38,211,0.5)) drop-shadow(0 0 40px rgba(99,102,241,0.4));
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%     { transform: translateY(-6px) scale(1.015); }
+  }
+  .banner-wordmark {
+    position: absolute;
+    left: 24px; bottom: 18px;
+    height: 22px;
+    opacity: 0.95;
+    /* logo is dark — invert on dark banner */
+    filter: invert(1) brightness(1.1);
+  }
+
+  .header {
+    position: relative;
+    padding: 0 24px;
+  }
+  .avatar {
+    position: absolute;
+    left: 24px; top: -44px;
+    width: 88px; height: 88px;
+    border-radius: 24px;
+    border: 4px solid var(--card);
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 10px 28px rgba(99,102,241,0.35), 0 0 0 1px rgba(255,255,255,0.06) inset;
+  }
+  .avatar img {
+    width: 100%; height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .platform-chip {
+    position: absolute;
+    right: 24px; top: 16px;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 11px;
+    background: rgba(10,10,15,0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .platform-chip svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+  .body {
+    padding: 60px 24px 24px;
+  }
+  .name-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 2px;
+  }
+  .name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .verified {
+    width: 18px; height: 18px;
+    color: #60a5fa;
+    flex: 0 0 auto;
+  }
+  .handle {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+  .bio {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #d4d4d8;
+    margin-bottom: 16px;
+    max-width: 44ch;
+  }
+  .bio strong { color: var(--fg); font-weight: 600; }
+
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 14px 18px;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .meta-item { display: inline-flex; align-items: center; gap: 6px; }
+  .meta-item svg { width: 14px; height: 14px; opacity: 0.8; }
+
+  .stats {
+    display: flex; gap: 22px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 20px;
+  }
+  .stat-num {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--fg);
+  }
+  .stat-label {
+    color: var(--muted);
+    font-size: 13px;
+    margin-left: 4px;
+  }
+
+  /* CTA */
+  .cta-row {
+    display: flex; gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 200ms ease, background 200ms ease, opacity 200ms ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-primary {
+    flex: 1 1 auto;
+    color: #0a0a0f;
+    background: #ffffff;
+    box-shadow: 0 8px 24px -8px rgba(255,255,255,0.4);
+  }
+  .btn-primary:hover { background: #f1f1f4; }
+  .btn-primary.is-gradient {
+    color: #fff;
+    background: linear-gradient(120deg, var(--grad-a), var(--grad-b) 50%, var(--grad-c));
+    background-size: 200% 100%;
+    animation: shimmer 5s ease-in-out infinite;
+    box-shadow: 0 10px 30px -8px rgba(168,85,247,0.5);
+  }
+  @keyframes shimmer {
+    0%,100% { background-position: 0% 50%; }
+    50%     { background-position: 100% 50%; }
+  }
+  .btn-primary.is-pulse {
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.5);
+    animation: ctaPulse 2.2s ease-out infinite;
+  }
+  @keyframes ctaPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+    70%  { box-shadow: 0 0 0 18px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  }
+
+  .btn-ghost {
+    color: var(--fg);
+    background: rgba(255,255,255,0.06);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+  /* Mini footer caption */
+  .caption {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: 18px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .caption .l { display: inline-flex; align-items: center; gap: 8px; }
+  .caption .pixelhaus {
+    color: var(--muted);
+  }
+  .copybtn {
+    background: transparent; border: 1px solid var(--line);
+    color: var(--muted); border-radius: 999px;
+    padding: 6px 10px; font-size: 11px; cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    transition: color 150ms, border-color 150ms;
+  }
+  .copybtn:hover { color: var(--fg); border-color: rgba(255,255,255,0.2); }
+  .copybtn.copied { color: #22c55e; border-color: rgba(34,197,94,0.4); }
+
+  /* Light theme overrides */
+  body.theme-light {
+    --bg: #f6f5f1;
+    --fg: #0a0a0f;
+    --muted: #6b6b73;
+    --line: rgba(0,0,0,0.08);
+    --card: #ffffff;
+  }
+  body.theme-light .ambient::before,
+  body.theme-light .ambient::after { opacity: 0.32; }
+  body.theme-light .platform-chip {
+    background: rgba(255,255,255,0.8);
+    color: #0a0a0f;
+    border-color: rgba(0,0,0,0.08);
+  }
+  body.theme-light .banner-wordmark { filter: none; }
+  body.theme-light .bio { color: #2a2a32; }
+  body.theme-light .btn-primary { background: #0a0a0f; color: #fff; }
+  body.theme-light .btn-primary:hover { background: #1f1f28; }
+  body.theme-light .btn-ghost { background: rgba(0,0,0,0.05); color: #0a0a0f; }
+  body.theme-light .btn-ghost:hover { background: rgba(0,0,0,0.08); }
+  body.theme-light .avatar { border-color: var(--card); }
+  body.theme-light .grain { mix-blend-mode: multiply; opacity: 0.04; }
+
+  /* Gradient theme (fully colored bg) */
+  body.theme-gradient {
+    --bg: #0a0517;
+    background:
+      radial-gradient(60% 80% at 20% 10%, #5b21b6 0%, transparent 60%),
+      radial-gradient(80% 80% at 80% 100%, #1d4ed8 0%, transparent 60%),
+      #0a0517;
+  }
+  body.theme-gradient .ambient { display: none; }
+
+  /* Entry animation */
+  .reveal { opacity: 0; transform: translateY(8px); animation: reveal 700ms cubic-bezier(.2,.7,.2,1) forwards; animation-fill-mode: both; }
+  .reveal.d1 { animation-delay: 60ms; }
+  .reveal.d2 { animation-delay: 180ms; }
+  .reveal.d3 { animation-delay: 300ms; }
+  .reveal.d4 { animation-delay: 420ms; }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
+  /* Followed state */
+  .followed-toast {
+    position: fixed;
+    left: 50%; bottom: 28px;
+    transform: translate(-50%, 20px);
+    background: #0a0a0f;
+    color: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms, transform 350ms cubic-bezier(.2,.7,.2,1);
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+  }
+  .followed-toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .followed-toast .check {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #22c55e;
+    display: inline-grid; place-items: center;
+    color: #0a0a0f;
+  }
+
+  /* Below the card */
+  .sub {
+    margin-top: 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .sub a { color: var(--fg); text-decoration: none; border-bottom: 1px dashed var(--line); }
+
+  @media (max-width: 480px) {
+    .wrap { max-width: 100%; }
+    .name { font-size: 20px; }
+    .avatar { width: 76px; height: 76px; top: -38px; font-size: 26px; }
+    .body { padding: 52px 20px 22px; }
+    .header { padding: 0 20px; }
+  }
+</style>
+</head>
+<body class="theme-dark">
+
+<div class="stage">
+  <div class="ambient"></div>
+  <div class="grain"></div>
+
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="dot"></span><span>Live on X · Just shipped</span></div>
+
+    <div class="card reveal d1">
+      <div class="banner">
+        <div class="banner-icon" aria-hidden="true">
+          <img src="assets/icon-transparent.png" alt="" />
+        </div>
+        <img class="banner-wordmark" src="assets/logo-dark.png" alt="Creative OS" />
+      </div>
+
+      <div class="header">
+        <div class="avatar" aria-hidden="true"><img src="assets/icon.png" alt="" /></div>
+        <div class="platform-chip" id="platformChip">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-7.06l-5.52-7.21L4.2 22H.94l8.04-9.18L1 2h7.22l4.99 6.6L18.24 2Zm-1.24 18h1.86L7.08 4H5.13l11.87 16Z"/></svg>
+          <span>on X</span>
+        </div>
+      </div>
+
+      <div class="body">
+        <div class="name-row">
+          <div class="name">Creative OS</div>
+          <svg class="verified" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2 9.6 4.2 6.4 4l-.6 3.2L3 8.8 4.6 12 3 15.2l2.8 1.6.6 3.2 3.2-.2L12 22l2.4-2.2 3.2.2.6-3.2L21 15.2 19.4 12 21 8.8l-2.8-1.6L17.6 4l-3.2.2L12 2Zm-1.2 13.5L7 11.8l1.4-1.4 2.4 2.4 5-5.2 1.4 1.4-6.4 6.5Z"/>
+          </svg>
+        </div>
+        <div class="handle mono">@joinCreativeOS</div>
+
+        <div class="bio">
+          <strong>Pixelhaus Creative OS™</strong> — AI-powered creative direction,
+          branding &amp; visual production system. <em>Coming soon.</em>
+        </div>
+
+        <div class="meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Cape Town
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+            Joined May 2026
+          </span>
+        </div>
+
+        <div class="stats" id="stats">
+          <div><span class="stat-num">12</span><span class="stat-label">Following</span></div>
+          <div><span class="stat-num" id="followerCount">0</span><span class="stat-label">Followers</span></div>
+          <div><span class="stat-num">∞</span><span class="stat-label">Ideas shipping</span></div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary is-gradient" id="followBtn"
+             href="https://x.com/intent/follow?screen_name=joinCreativeOS"
+             target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-7.06l-5.52-7.21L4.2 22H.94l8.04-9.18L1 2h7.22l4.99 6.6L18.24 2Zm-1.24 18h1.86L7.08 4H5.13l11.87 16Z"/></svg>
+            <span id="followBtnLabel">Follow on X</span>
+          </a>
+          <a class="btn btn-ghost" href="https://x.com/joinCreativeOS" target="_blank" rel="noopener" id="viewBtn">
+            View profile
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption reveal d3">
+      <span class="l">
+        <span class="pixelhaus">A Pixelhaus product</span>
+      </span>
+      <button class="copybtn" id="copyBtn" type="button">copy link ↗</button>
+    </div>
+
+    <div class="sub reveal d4">
+      Built for builders, brand teams &amp; founders. Follow along while we ship in public.
+    </div>
+  </div>
+</div>
+
+<div class="followed-toast" id="toast">
+  <span class="check">
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg>
+  </span>
+  <span>Opening X — thanks for the follow!</span>
+</div>
+
+<!-- ============ Tweaks ============ -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script>
+  // ----- Animated follower count (visual flavor) -----
+  (function () {
+    var el = document.getElementById('followerCount');
+    if (!el) return;
+    var target = 0;
+    // small ambient bump
+    setTimeout(function () {
+      var n = 0;
+      var iv = setInterval(function () {
+        n += 1;
+        el.textContent = n.toLocaleString();
+        if (n >= 1) clearInterval(iv);
+      }, 60);
+    }, 900);
+  })();
+
+  // ----- Follow click feedback -----
+  document.getElementById('followBtn').addEventListener('click', function () {
+    var t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  });
+
+  // ----- Copy link button -----
+  document.getElementById('copyBtn').addEventListener('click', async function () {
+    var btn = this;
+    var url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      btn.textContent = 'copied ✓';
+      btn.classList.add('copied');
+      setTimeout(function(){
+        btn.textContent = 'copy link ↗';
+        btn.classList.remove('copied');
+      }, 1800);
+    } catch (e) {
+      btn.textContent = 'copy failed';
+    }
+  });
+</script>
+
+<script type="text/babel" data-presets="env,react">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "dark",
+  "ctaStyle": "gradient",
+  "ctaPulse": true,
+  "ctaLabel": "Follow on X",
+  "showStats": true,
+  "showBanner": true,
+  "showPlatformChip": true,
+  "accent": ["#c026d3","#6366f1","#3b82f6"]
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    // theme
+    document.body.classList.remove('theme-dark','theme-light','theme-gradient');
+    document.body.classList.add('theme-' + t.theme);
+
+    // banner
+    document.querySelector('.banner').style.display = t.showBanner ? '' : 'none';
+    // shift body padding when banner hidden
+    document.querySelector('.body').style.paddingTop = t.showBanner ? '' : '24px';
+    document.querySelector('.avatar').style.top = t.showBanner ? '' : '24px';
+    document.querySelector('.avatar').style.position = t.showBanner ? '' : 'relative';
+    document.querySelector('.avatar').style.left = t.showBanner ? '' : '0';
+    document.querySelector('.avatar').style.marginBottom = t.showBanner ? '' : '12px';
+
+    // stats
+    document.getElementById('stats').style.display = t.showStats ? '' : 'none';
+
+    // platform chip
+    document.getElementById('platformChip').style.display = t.showPlatformChip ? '' : 'none';
+
+    // CTA
+    const btn = document.getElementById('followBtn');
+    btn.classList.remove('is-gradient','is-pulse');
+    if (t.ctaStyle === 'gradient') btn.classList.add('is-gradient');
+    if (t.ctaStyle === 'outline') {
+      btn.style.background = 'transparent';
+      btn.style.color = 'var(--fg)';
+      btn.style.border = '1px solid currentColor';
+    } else {
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.border = '';
+    }
+    if (t.ctaPulse && t.ctaStyle !== 'outline') btn.classList.add('is-pulse');
+
+    document.getElementById('followBtnLabel').textContent = t.ctaLabel;
+
+    // accent gradient
+    const acc = Array.isArray(t.accent) ? t.accent : ['#c026d3','#6366f1','#3b82f6'];
+    document.documentElement.style.setProperty('--grad-a', acc[0] || '#c026d3');
+    document.documentElement.style.setProperty('--grad-b', acc[1] || acc[0] || '#6366f1');
+    document.documentElement.style.setProperty('--grad-c', acc[2] || acc[1] || acc[0] || '#3b82f6');
+  }, [t]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection title="Theme">
+        <TweakRadio
+          label="Mode"
+          value={t.theme}
+          options={[
+            {value:'dark', label:'Dark'},
+            {value:'light', label:'Light'},
+            {value:'gradient', label:'Gradient'},
+          ]}
+          onChange={v => setTweak('theme', v)}
+        />
+        <TweakColor
+          label="Accent palette"
+          value={t.accent}
+          options={[
+            ['#c026d3','#6366f1','#3b82f6'],
+            ['#f97316','#ef4444','#ec4899'],
+            ['#22d3ee','#3b82f6','#8b5cf6'],
+            ['#84cc16','#22c55e','#14b8a6'],
+          ]}
+          onChange={v => setTweak('accent', v)}
+        />
+      </TweakSection>
+
+      <TweakSection title="Call to action">
+        <TweakRadio
+          label="CTA style"
+          value={t.ctaStyle}
+          options={[
+            {value:'gradient', label:'Gradient'},
+            {value:'solid', label:'Solid'},
+            {value:'outline', label:'Outline'},
+          ]}
+          onChange={v => setTweak('ctaStyle', v)}
+        />
+        <TweakToggle
+          label="Pulse animation"
+          value={t.ctaPulse}
+          onChange={v => setTweak('ctaPulse', v)}
+        />
+        <TweakText
+          label="Button label"
+          value={t.ctaLabel}
+          onChange={v => setTweak('ctaLabel', v)}
+        />
+      </TweakSection>
+
+      <TweakSection title="Card contents">
+        <TweakToggle label="Show banner" value={t.showBanner} onChange={v => setTweak('showBanner', v)} />
+        <TweakToggle label="Show stats" value={t.showStats} onChange={v => setTweak('showStats', v)} />
+        <TweakToggle label="Show 'on X' chip" value={t.showPlatformChip} onChange={v => setTweak('showPlatformChip', v)} />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+const root = document.createElement('div');
+document.body.appendChild(root);
+ReactDOM.createRoot(root).render(<App />);
+</script>
+
+</body>
+</html>
